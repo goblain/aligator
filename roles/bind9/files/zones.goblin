@@ -1,0 +1,49 @@
+zone "deckare.pl"
+{
+    type master;
+    file "/etc/bind/master/goblin-pl.deckare";
+    allow-transfer { "slaves-goblin"; };
+};
+
+zone "centrumsopot.pl"
+{
+    type master;
+    file "/etc/bind/master/goblin-pl.centrumsopot";
+    allow-transfer { "slaves-goblin"; };
+};
+
+
+zone "moenert.com"
+{
+    type master;
+    file "/etc/bind/master/goblin-com.moenert";
+    allow-transfer { "slaves-goblin"; };
+};
+
+zone "motofolwark.pl"
+{
+    type master;
+    file "/etc/bind/master/goblin-pl.motofolwark";
+    allow-transfer { "slaves-goblin"; };
+};
+
+zone "motofolwark.net"
+{
+    type master;
+    file "/etc/bind/master/goblin-net.motofolwark";
+    allow-transfer { "slaves-goblin"; };
+};
+
+zone "pentex.pl" 
+{
+    type master;
+    file "/etc/bind/master/goblin-pl.pentex";
+    allow-transfer { "slaves-goblin"; };
+};
+
+zone "wentaconsulting.pl"
+{
+    type master;
+    file "/etc/bind/master/goblin-pl.wentaconsulting";
+    allow-transfer { "slaves-goblin"; };
+};

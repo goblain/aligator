@@ -1,0 +1,8 @@
+- copy:
+    src: files/hass.service
+    dest: /etc/systemd/system/hass.service
+
+- copy:
+    src: files/configuration.yaml
+    dest: /srv/hass/configuration.yaml
+  notify: hass

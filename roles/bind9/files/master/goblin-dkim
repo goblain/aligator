@@ -1,0 +1,2 @@
+_domainkey		TXT	"o=!;r=admin@pentex.pl"
+dkim._domainkey		TXT	""

@@ -1,0 +1,13 @@
+[Unit]
+Description=Firewall
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/bin/bash -c "/bin/cat /etc/iptables.ipv4 | /sbin/iptables-restore"
+Restart=Never
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+

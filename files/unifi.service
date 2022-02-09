@@ -1,0 +1,27 @@
+[Unit]
+Description=UniFi Controller
+
+[Service]
+Environment=DOCKER_IMAGE=linuxserver/unifi-controller:5.12.35-ls44
+Environment=DOCKER_NAME=unifi
+
+ExecStartPre=-/usr/bin/docker pull ${DOCKER_IMAGE}
+ExecStartPre=-/usr/bin/docker rm -f ${DOCKER_NAME}
+ExecStart=/usr/bin/docker run --name ${DOCKER_NAME} --rm \
+            -v /srv/unifi:/config \
+            -p 192.168.231.1:8080:8080 \
+            -p 192.168.231.1:8081:8081 \
+            -p 192.168.231.1:8443:8443 \
+            -p 192.168.231.1:8843:8843 \
+            -p 192.168.231.1:8880:8880 \
+            -p 192.168.231.1:6789:6789 \
+            -p 192.168.231.1:10001:10001/udp \
+            -p 192.168.231.1:3478:3478/udp \
+            ${DOCKER_IMAGE}
+            
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+

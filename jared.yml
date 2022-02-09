@@ -1,0 +1,28 @@
+# jared is the new main hosting server picked up on ssdnodes promo for 3 years
+# to host bunch of private stuff and local kubeadm managed kubernetes cluster
+# ansible manages only core components like host OS tools, firewall etc.
+
+- hosts: all
+
+  vars:
+    firewall_log_drops: true
+    firewall_public_ip: 208.87.134.115
+    fail2ban_enabled: true
+    kubernetes_version: v1.20.6
+
+  become: yes
+  become_user: root
+  become_method: sudo
+
+  roles:
+  - tools
+  - firewall
+  - fail2ban
+#   - kubernetes
+#   - influxdb
+#   - coredns
+
+  tasks:
+
+  - hostname:
+      name: jared

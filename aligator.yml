@@ -1,0 +1,56 @@
+- hosts: all
+
+  become: yes
+  become_user: root
+  become_method: sudo
+
+  roles:
+  - hass
+  - influxdb
+  - coredns
+
+  tasks:
+
+  - copy:
+      src: files/iptables.ipv4
+      dest: /etc/iptables.ipv4
+
+  - copy:
+      src: files/firewall.service
+      dest: /etc/systemd/system/firewall.service
+
+  - copy:
+      src: files/unifi.service
+      dest: /etc/systemd/system/unifi.service
+
+  - systemd:
+      service: unifi
+      state: started
+      enabled: true
+
+  - copy:
+      src: files/mosquitto/config/
+      dest: /srv/mosquitto/config/
+
+  - copy:
+      src: files/mosquitto/mosquitto.service
+      dest: /etc/systemd/system/mosquitto.service
+
+  - copy:
+      src: files/dhcpd/dhcpd.conf
+      dest: /etc/dhcp/dhcpd.conf
+    notify: dhcpd
+
+  - systemd:
+      service: mosquitto
+      state: started
+      enabled: true
+
+  handlers:
+
+  - name: dhcpd
+    systemd:
+      service: isc-dhcp-server.service
+      state: restarted
+      enabled: true
+

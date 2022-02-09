@@ -1,0 +1,21 @@
+acl "slaves-goblin" {
+  83.142.46.21;
+  83.142.46.22;
+  31.179.141.102; 
+  188.165.232.46;
+};
+
+include "/etc/bind/zones.goblin";
+
+logging{
+  channel simple_log {
+    stderr;
+    severity warning;
+    print-time yes;
+    print-severity yes;
+    print-category yes;
+  };
+  category default{
+    simple_log;
+  };
+};

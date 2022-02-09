@@ -1,0 +1,22 @@
+[Unit]
+Description=Mosquitto
+
+[Service]
+Environment=DOCKER_IMAGE=eclipse-mosquitto:latest
+Environment=DOCKER_NAME=mosquitto
+
+ExecStartPre=-/usr/bin/docker pull ${DOCKER_IMAGE}
+ExecStartPre=-/usr/bin/docker rm -f ${DOCKER_NAME}
+ExecStart=/usr/bin/docker run --name ${DOCKER_NAME} \
+            --log-driver=syslog \
+            -v /srv/mosquitto/config:/mosquitto/config \
+            -v /srv/mosquitto/data:/mosquitto/data \
+            -v /srv/mosquitto/log:/mosquitto/log \
+            -p 192.168.231.1:1883:1883 \
+            ${DOCKER_IMAGE}
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+

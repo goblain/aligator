@@ -1,0 +1,13 @@
+[Unit]
+Description=Firewall
+After=syslog.target network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/bin/bash -c "/bin/cat /etc/iptables.ipv4 | /sbin/iptables-restore && /bin/cat /etc/iptables.ipv6 | /sbin/ip6tables-restore"
+ExecStop=/bin/bash -c "/bin/cat /etc/iptables.empty | /sbin/iptables-restore && /bin/cat /etc/iptables.empty | /sbin/ip6tables-restore"
+
+[Install]
+WantedBy=multi-user.target
+

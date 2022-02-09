@@ -1,0 +1,22 @@
+[Unit]
+Description=CoreDNS
+
+[Service]
+Environment=DOCKER_IMAGE=coredns/coredns
+Environment=DOCKER_NAME=coredns
+
+ExecStartPre=-/usr/bin/docker pull ${DOCKER_IMAGE}
+ExecStartPre=-/usr/bin/docker rm -f ${DOCKER_NAME}
+ExecStart=/usr/bin/docker run --name ${DOCKER_NAME} --rm \
+            -v /srv/coredns/Corefile:/Corefile \
+            -v /srv/coredns:/srv/coredns \
+            -p 192.168.231.1:1053:2053 \
+            -p 192.168.231.1:1053:2053/udp \
+            ${DOCKER_IMAGE}
+            
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+

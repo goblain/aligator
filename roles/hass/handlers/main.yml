@@ -1,0 +1,5 @@
+- name: hass
+  systemd:
+    name: hass
+    state: restarted
+    enabled: true

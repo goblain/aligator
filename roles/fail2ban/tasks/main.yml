@@ -1,0 +1,2 @@
+- include: debian.yml
+  when: fail2ban_enabled

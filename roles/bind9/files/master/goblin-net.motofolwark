@@ -1,0 +1,15 @@
+$ORIGIN .
+$TTL 1800	; 30 minutes
+motofolwark.net		IN SOA	ns1.pentex.pl. root.pentex.pl. (
+				2006102107 ; serial
+				21600      ; refresh (6 hours)
+				3600       ; retry (1 hour)
+				604800     ; expire (1 week)
+				1800       ; minimum (30 minutes)
+				)
+			NS	ns1.pentex.pl.
+			NS	ns2.pentex.pl.
+			A	178.32.41.161
+			MX	10 mail.pentex.pl.
+$ORIGIN motofolwark.net.
+www			A	178.32.41.161

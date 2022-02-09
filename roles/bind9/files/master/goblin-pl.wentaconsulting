@@ -1,0 +1,20 @@
+$ORIGIN .
+$TTL 1800	; 30 minutes
+wentaconsulting.pl      IN SOA	ns1.pentex.pl. root.pentex.pl. (
+				2017072107 ; serial
+				21600      ; refresh (6 hours)
+				3600       ; retry (1 hour)
+				604800     ; expire (1 week)
+				1800       ; minimum (30 minutes)
+				)
+			NS	ns1.pentex.pl.
+			NS	ns2.pentex.pl.
+			A	178.32.41.161
+			MX	10 mail.pentex.pl.
+			SPF	"v=spf1 include:mail.pentex.pl ~all"
+			TXT	"v=spf1 include:mail.pentex.pl ~all"
+
+$ORIGIN wentaconsulting.pl.
+www			A	178.32.41.161
+_domainkey		TXT	"o=~;r=postmaster@pentex.pl"
+dkim._domainkey		TXT	"v=DKIM1;k=rsa;t=s;s=email;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCV9mSqG26AaENMqT7ScnzW5TKhFHek/PoSMmFy+2iXKLspLNsUwOpTuaLDeVa8Gb0ykz+ZW0Kic/y/ann3O9YXGGqWDfG4r6elk+p4h32Rgn/w2LXZdNG6iGp54lKxyHHGQkmd31YRq8Yd/2EBETI5T1QRa8wm2VbeBPObMLeOOwIDAQAB"

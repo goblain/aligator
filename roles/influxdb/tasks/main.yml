@@ -1,0 +1,9 @@
+- copy:
+    src: files/influxdb.service
+    dest: /etc/systemd/system/influxdb.service
+  notify: influxdb
+
+#- copy:
+#    src: files/configuration.yaml
+#    dest: /srv/hass/configuration.yaml
+#  notify: influxdb

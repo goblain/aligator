@@ -1,0 +1,19 @@
+- copy:
+    src: files/coredns.service
+    dest: /etc/systemd/system/coredns.service
+  notify: coredns
+
+- file:
+    path: /srv/coredns
+    state: directory
+    mode: '0755'
+
+- copy:
+    src: files/Corefile
+    dest: /srv/coredns/Corefile
+  notify: coredns
+
+- copy:
+    src: files/Corefile
+    dest: /srv/coredns/db.mute.zone
+  notify: coredns

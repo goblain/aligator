@@ -1,0 +1,10 @@
+- apt:
+    name:
+    - git
+    - mc
+    - python3-pip
+    # - libssl-dev
+    - htop
+    - tcpdump
+    - mlocate
+    - docker.io

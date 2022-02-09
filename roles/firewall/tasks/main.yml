@@ -1,0 +1,32 @@
+---
+- name: empty firewall rules
+  template:
+    src: templates/iptables.empty
+    dest: /etc/iptables.empty
+    owner: root
+    mode: "0750"
+  notify: firewall
+
+- name: IPv4 firewall rules
+  template:
+    src: templates/iptables.ipv4
+    dest: /etc/iptables.ipv4
+    owner: root
+    mode: "0750"
+  notify: firewall
+
+- name: IPv6 firewall rules
+  template:
+    src: templates/iptables.ipv6
+    dest: /etc/iptables.ipv6
+    owner: root
+    mode: "0750"
+  notify: firewall
+
+- name: Copy firewall.service
+  copy:
+    src: files/firewall.service
+    dest: /etc/systemd/system/firewall.service
+    owner: root
+    mode: "0750"
+  notify: firewall

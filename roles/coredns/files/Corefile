@@ -1,0 +1,15 @@
+. {
+  whoami
+  log
+  errors
+  cache
+}
+
+youtube.com {
+  records {
+    @   60  IN SOA ns.icann.org. noc.dns.icann.org. 2020091001 7200 3600 1209600 3600
+    @   60  IN MX 10 mx1
+    mx1 60  IN A  127.0.0.1
+  }
+}
+

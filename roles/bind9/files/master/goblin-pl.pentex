@@ -1,0 +1,61 @@
+$ORIGIN .
+$TTL 1800	; 30 minutes
+pentex.pl		IN SOA	ns1.pentex.pl. root.pentex.pl. (
+				2013061331 ; serial
+				21600      ; refresh (6 hours)
+				3600       ; retry (1 hour)
+				604800     ; expire (1 week)
+				1800       ; minimum (30 minutes)
+				)
+			NS	dns1.pentex.pl.
+			NS	dns2.pentex.pl.
+			NS	ns1.pentex.pl.
+			NS	ns2.pentex.pl.
+			A	178.32.41.161
+			MX	1 ASPMX.L.GOOGLE.COM.
+			MX	5 ALT1.ASPMX.L.GOOGLE.COM.
+			MX	5 ALT2.ASPMX.L.GOOGLE.COM.
+			MX	10 ALT3.ASPMX.L.GOOGLE.COM.
+			MX	10 ALT4.ASPMX.L.GOOGLE.COM.
+			TXT     "google-site-verification=-iXEifYapcBMipbLyKNqu_XXi1B3I4zFu1n2fNRjt1c"
+			TXT	"v=spf1 include:_spf.google.com include:mailgun.org mx ~all"
+			TXT	"MS=ms91411419"
+$ORIGIN pentex.pl.
+*			A	178.32.41.161
+dkim._domainkey		TXT	"v=DKIM1\; g=*\; k=rsa\; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDZYhCxzL4ZEbhQkURdUASxMYFbifIOwoI5T+3lGjirUhne3PS/06HvqNKUPvCtk2Uzp07n6w+zyVDb6BX+NP+nHAhZJ3TW+IPpIuHQSz/DPtNsPsS6mbRZeoY53ZMNUAkaoHs7ZzEAMw26DrUu754p0evFAI/FyyWhG2bb6ZAutwIDAQAB"
+k1._domainkey		TXT	"k=rsa\; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCgYSSeS1G928A8U+6JO7vXIxLk+MxWi97n2oyjNvUfYtFytoCFWj8M95lm/RJwKiWv7ICV5BB4NfLZHDPx/vKSTGtwQlcOlBtJcTyVT+anMbuazdPwdej/opOi8QAsdlKZug8rbmyaek2NQKjhQXtztIbJc2yp/fldRha8SukJQQIDAQAB"
+bluejet			A	83.13.172.26
+$ORIGIN dev.pentex.pl.
+*			A	192.168.56.2
+$ORIGIN pentex.pl.
+dns			A	178.32.41.161
+dns1			A	178.32.41.161
+dns2			A	91.221.26.223
+ns1			A	178.32.41.161
+cerber			A	178.32.41.161
+ns2			A	91.221.26.223
+hosting			A	91.221.26.223
+ns3			A	91.221.26.223
+web			A	178.32.41.161
+jared                   A       208.87.134.115
+
+ovh			A	208.87.134.115
+mail			A	208.87.134.115
+mail                    SPF     "v=spf1 a:mail.pentex.pl ~all"                                                                                                                           
+mail                    TXT     "v=spf1 a:mail.pentex.pl ~all"
+smtp			A	208.87.134.115
+imap			A	208.87.134.115
+pop3			A	208.87.134.115
+reserved		A	208.87.134.115
+
+xovh			A	178.32.200.245
+xmail			A	178.32.200.245
+xsmtp			A	178.32.200.245
+ximap			A	178.32.200.245
+xpop3			A	178.32.200.245
+xreserved		A	178.33.48.193
+
+email			CNAME	mailgun.org.
+
+cf			NS	carter.ns.cloudflare.com.
+cf			NS	grace.ns.cloudflare.com.

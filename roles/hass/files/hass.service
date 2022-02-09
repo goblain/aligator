@@ -1,0 +1,23 @@
+[Unit]
+Description=Homeassistant
+
+[Service]
+Environment=DOCKER_IMAGE=homeassistant/home-assistant
+Environment=DOCKER_NAME=hass
+
+ExecStartPre=-/usr/bin/docker pull ${DOCKER_IMAGE}
+ExecStartPre=-/usr/bin/docker rm -f ${DOCKER_NAME}
+ExecStart=/usr/bin/docker run --name ${DOCKER_NAME} \
+            --log-driver=syslog \
+            -v /srv/hass/:/config \
+            -e "Europe/Warsaw" \
+            -p 192.168.231.1:8123:8123 \
+            --device /dev/ttyACM0 \
+            ${DOCKER_IMAGE}
+            
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+
